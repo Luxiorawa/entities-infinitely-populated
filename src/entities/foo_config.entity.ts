@@ -14,5 +14,5 @@ export class FooConfig {
   public value: string;
 
   @ManyToOne(() => Foo)
-  public foo = Foo;
+  public foo: Foo();
 }
