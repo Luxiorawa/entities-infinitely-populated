@@ -16,7 +16,6 @@ import { Client } from './entities/client.entity';
         autoLoadEntities: true,
       }),
     }),
-    MikroOrmModule.forFeature([Client]),
   ],
   controllers: [AppController],
 })
