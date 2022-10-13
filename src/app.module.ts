@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { Foo } from './entities/foo.entity';
+import { Client } from './entities/client.entity';
 
 @Module({
   imports: [
@@ -17,9 +16,8 @@ import { Foo } from './entities/foo.entity';
         autoLoadEntities: true,
       }),
     }),
-    MikroOrmModule.forFeature([Foo]),
+    MikroOrmModule.forFeature([Client]),
   ],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

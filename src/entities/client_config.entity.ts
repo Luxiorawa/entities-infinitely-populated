@@ -1,9 +1,9 @@
 import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
 
-import { Foo } from './foo.entity';
+import { Client } from './client.entity';
 
 @Entity()
-export class FooConfig {
+export class ClientConfig {
   @PrimaryKey()
   public id: number;
 
@@ -13,6 +13,6 @@ export class FooConfig {
   @Property()
   public value: string;
 
-  @ManyToOne(() => Foo)
-  public foo: Foo;
+  @ManyToOne(() => Client)
+  public client: Client;
 }
