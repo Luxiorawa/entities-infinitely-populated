@@ -20,16 +20,6 @@ export class AppService {
       }
     );
 
-    // Successfully compile
-
-    console.log("foo :", foo);
-    console.log("foo config :", foo.configs);
-    console.log("foo in config :", foo.configs[0].foo);
-
-    // Doesn't compile : Property 'configs' does not exists on type 'typeof Foo'
-
-    console.log("foo config in config :", foo.configs[0].foo.configs);
-
     return foo;
   }
 }
