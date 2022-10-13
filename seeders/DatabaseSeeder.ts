@@ -6,6 +6,7 @@ import { ClientFactory } from '../factories/client.factory';
 import { ClientConfigFactory } from '../factories/client_config.factory';
 import { UserFactory } from "../factories/user.factory"
 import { ProductFactory } from "./../factories/product.factory"
+import { cloneDeep } from "lodash"
 
 export class DatabaseSeeder extends Seeder {
   public async run(em: EntityManager): Promise<void> {
@@ -16,6 +17,11 @@ export class DatabaseSeeder extends Seeder {
       })
       .create(numberOfClient);
     
+    // const clientWithoutConfig = cloneDeep(clients).map((client) => {
+    //   delete client.configs;
+    //   return client;
+    // })
+    
     const numberOfUsersPerClient = 5
     const numberOfProductsPerClient = 30
     const numberOfAddressesPerClient = 10
@@ -25,6 +31,13 @@ export class DatabaseSeeder extends Seeder {
       const users = await new UserFactory(em).each((user) => {
         user.client = client
       }).create(numberOfUsersPerClient)
+
+      // const usersWithoutClient = cloneDeep(users).map((user) => {
+      //   delete user.client;
+      //   return user;
+      // })
+
+      // console.log("usersWithoutClient :", usersWithoutClient)
 
       const products = await new ProductFactory(em).each((product) => {
         product.client = client
